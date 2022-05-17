@@ -12,7 +12,7 @@
     <!-- HTML comment -->
     <h1>
         <%
-        out.print(LocalTime.now());
+        out.print(LocalTime.now());   //questo non viene considerato come codice html ma java
         %>
     </h1>
     <%-- JSP comment --%>

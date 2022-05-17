@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings("serial")
 @WebServlet("/s02/timer")
-public class Timer extends HttpServlet {
+public class Timer extends HttpServlet {                                   //non c'è più il main ma solo una classe e metodi che rispondono alle request degli utenti. tomcat gestisce
     private static final Logger log = LogManager.getLogger(Timer.class);
 
     @Override

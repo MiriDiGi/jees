@@ -15,8 +15,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings("serial")
-@WebServlet("/s03/checker")
-public class Checker extends HttpServlet {
+@WebServlet("/s03/checker")    //chi chiama checker
+public class Checker extends HttpServlet {      //classe la definisco io, l'oggetto per il doget lo crea tomcat
     private static final Logger log = LogManager.getLogger(Checker.class);
 
     @Override
