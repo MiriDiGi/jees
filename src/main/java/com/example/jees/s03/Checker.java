@@ -22,19 +22,25 @@ public class Checker extends HttpServlet {      //classe la definisco io, l'ogge
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("user");
-        log.debug("User is {" + user + "}");
+        String user = request.getParameter("user");    //chiedo alla request se c'è un parametro che si chiama user, se sì prendilo e
+        log.debug("User is {" + user + "}");           //metti il parametro nella stringa user. lo loggo
 
-        Set<Character> set = new TreeSet<>();
-        if (user != null) {
-            for (char c : user.toCharArray()) {
-                set.add(Character.toLowerCase(c));
+        Set<Character> set = new TreeSet<>();          //ho un set di caratteri, chiedo 
+        if (user != null) {                            //accertati se l'utente mi ha passato una cosa buona
+            for (char c : user.toCharArray()) {        //converte in un array di caratteri, posso scrivere:
+           // for (int i = 0; i < user.length(); i++){
+           // char c = user.charAt(i);
+           // char low = Character.toLowerCase(c);
+           // set.add(low); }
+            	// oppure scrivo contratto:
+           //  set.add(Character.toLowerCase(user.charAt(i))); }
+                set.add(Character.toLowerCase(c));    //prendi il carattere e aggiungilo al set, non riesco ad aggiungere l'ultima lettera di bob perchè set non accetta duplicati
             }
         }
-        request.setAttribute("set", set);
+        request.setAttribute("set", set);   //set di caratteri lo metto nella request
 
-        RequestDispatcher rd = request.getRequestDispatcher("/s03/checker.jsp");
-        rd.forward(request, response);
+        RequestDispatcher rd = request.getRequestDispatcher("/s03/checker.jsp");  //controllo passato a jsp dove dentro &{set} metterà i caratteri di set
+        rd.forward(request, response);    //passo request e response
 
         // same as above, in a more compact way
         // request.getRequestDispatcher("checker.jsp").forward(request, response);

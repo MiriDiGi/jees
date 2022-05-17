@@ -13,19 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@SuppressWarnings("serial")
-@WebServlet("/s02/timer")
-public class Timer extends HttpServlet {                                   //non c'è più il main ma solo una classe e metodi che rispondono alle request degli utenti. tomcat gestisce
+@SuppressWarnings("serial")      //sarebbe richiesto che le classi servlet siano serializzabili, passate in giro
+@WebServlet("/s02/timer")      //annotazione associata a questo indirizzo nome classe e indirizzo possono avere nomi diversi. tipicamente si chiama srv/timer
+public class Timer extends HttpServlet {          //servlet è una classe (http servletè un classe astratta, non può essere istanziata, dentro ha costanti con tutti i metodi http che possiamo usare)                    //non c'è più il main ma solo una classe e metodi che rispondono alle request degli utenti. tomcat gestisce
     private static final Logger log = LogManager.getLogger(Timer.class);
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)   //la doget genera risposta d'errore, per non generarla devo fare un override, infatti ecco. così genera una risposta
+            throws ServletException, IOException {                                    // a noi interessano solo doget e dopost ma qui abbiamo solo il doget
         log.trace("called");
 
-        response.setContentType("text/html");
+        response.setContentType("text/html");   //la response passata da tomcat, dentro torno l'html codificato in utf-8
         response.setCharacterEncoding("utf-8");
-        try (PrintWriter writer = response.getWriter()) {
+        try (PrintWriter writer = response.getWriter()) {        //try with resources. prendo il metodo writer, nella response mettici tutto questo
             writer.println("<!DOCTYPE html><html>");
             writer.println("<head><meta charset=\"utf-8\">");
             writer.println("<link rel=\"icon\" href=\"data:;base64,=\">");
