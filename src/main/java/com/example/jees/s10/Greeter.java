@@ -21,23 +21,23 @@ public class Greeter extends HttpServlet {
             throws ServletException, IOException {
         log.trace("called");
 
-        String user = request.getParameter("user");
+        String user = request.getParameter("user");    //leggo parametro user
 
-        HttpSession session = request.getSession();
-        String prevUser = (String) session.getAttribute("user");
+        HttpSession session = request.getSession();     //chiedo alla request di darmi una sessione
+        String prevUser = (String) session.getAttribute("user");    //questo previous lo prendo dalla session
         if (prevUser == null) {
             prevUser = "";
         }
 
         if (user == null) {
-            session.invalidate();
+            session.invalidate();       //dal bottone di reset parte la request senza parametri e questa da l'invalidate()
         } else if (user.isBlank()) {
-            session.setAttribute("user", "unknown");
-        } else {
-            session.setAttribute("user", user);
+            session.setAttribute("user", "unknown");  //se non ho passato niente user è unknown
+        } else {  
+            session.setAttribute("user", user);    //metto nell'attributo user il nome dato
         }
 
-        request.setAttribute("previous", prevUser);
+        request.setAttribute("previous", prevUser);    //metto in previus l'attributo prevuser
         request.getRequestDispatcher("greeter.jsp").forward(request, response);
     }
 }

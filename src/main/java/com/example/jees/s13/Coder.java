@@ -2,7 +2,7 @@ package com.example.jees.s13;
 
 import java.time.LocalDate;
 
-public class Coder {
+public class Coder {   //questo è un java bean
     private long id;
     private String firstName;
     private String lastName;

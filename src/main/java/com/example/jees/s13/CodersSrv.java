@@ -18,15 +18,15 @@ import org.apache.logging.log4j.Logger;
 public class CodersSrv extends HttpServlet {
     private static final Logger log = LogManager.getLogger(CodersSrv.class);
 
-    @Resource(name = "jdbc/hron")
+    @Resource(name = "jdbc/hron")   //viene iniettata da tomcat la risorsa, il database.
     private DataSource ds;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         log.trace("called");
-        try (CoderDao dao = new CoderDao(ds)) {
-            request.setAttribute("coders", dao.getAll());
+        try (CoderDao dao = new CoderDao(ds)) {    //creo dao passo data sources e dao pensa a stabilire la connessione
+            request.setAttribute("coders", dao.getAll());    //faccio la get all che torna una lista di corder, java bean (serve solo per portare in giro dati)
             request.getRequestDispatcher("coders.jsp").forward(request, response);
         }
     }

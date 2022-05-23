@@ -20,7 +20,7 @@ public class ContextParam extends HttpServlet {
             throws ServletException, IOException {
         log.trace("called");
 
-        String admin = this.getServletContext().getInitParameter("admin");
+        String admin = this.getServletContext().getInitParameter("admin");    //getInitParameter è per il context
         request.setAttribute("reversedAdmin", new StringBuilder(admin).reverse().toString());
         request.getRequestDispatcher("contextParam.jsp").forward(request, response);
     }

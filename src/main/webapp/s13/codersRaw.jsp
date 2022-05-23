@@ -2,14 +2,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<sql:query dataSource="jdbc/hron" var="coders">
-    SELECT employee_id, first_name, last_name, hired, salary
+<head>  <!-- pagina molto confusa, 3 tecnologie diverse in una pagina sola -->
+<meta charset="utf-8">     
+<sql:query dataSource="jdbc/hron" var="coders">  
+    SELECT employee_id, first_name, last_name, hired, salary   
     FROM employee
-    WHERE department_id = 6
+    WHERE department_id = 6;
 </sql:query>
 <title>Coders</title>
 <link rel="icon" href="data:;base64,=">

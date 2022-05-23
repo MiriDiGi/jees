@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@WebFilter(urlPatterns = { "/s16/*" })
+@WebFilter(urlPatterns = { "/s16/*" })    //filtra tutte le richieste indirizzate alla s16
 public class FilterAll implements Filter {
     private static final Logger log = LogManager.getLogger(FilterAll.class);
 

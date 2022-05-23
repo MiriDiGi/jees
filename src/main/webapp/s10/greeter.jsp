@@ -12,7 +12,7 @@
     <h1>The greeter page</h1>
 
     <c:choose>
-        <c:when test="${previous eq null}">
+        <c:when test="${previous eq null}">    <!-- eq è come scrivere == -->
             <p>No information available on previous user name</p>
         </c:when>
         <c:when test="${previous eq ''}">
@@ -22,14 +22,14 @@
             <p>Goodbye ${previous}</p>
         </c:otherwise>
     </c:choose>
-    <c:if test="${user ne null}">
+    <c:if test="${user ne null}">   <!-- se non è uguale a null, user lo prende dalla session, posso dirgli esplicitamente lo scope specifico dove andarlo a cercare sessionScope in questo caso -->
         <p>Hello, ${user}</p>
     </c:if>
     <form action="greeter">
-        <label>Set new user name <input name="user" placeholder="..." autofocus></label>
+        <label>Set new user name <input name="user" placeholder="..." autofocus></label>  <!-- dato che non ho specificato mi chiama un get -->
         <button>OK</button>
     </form>
-    <a href="greeter"><button>Reset</button></a>
+    <a href="greeter"><button>Reset</button></a>    <!-- bottone messo dentro all'ancor, parte una get per la risorsa greater SENZA PARAMETRI, questo termina la sessione -->
     <p>
         Back <a href="/jees/index.html">home</a>
     </p>

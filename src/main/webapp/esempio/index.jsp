@@ -4,10 +4,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Ciao</title>
 </head>
 <body>
-	<p>Ciao, ${user}</p>
+	<form action="ciao">
+		<input name="user" placeholder="user" value="${wrong}">
+		<input type="password" name="password">
+		<button>Ok</button>
+	</form>
 	<p><a href="x/info.html">info</a></p> 
 	<p><a href="logout">logout</a></p> 
 </body>

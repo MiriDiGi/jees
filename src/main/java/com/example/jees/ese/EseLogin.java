@@ -1,6 +1,8 @@
 package com.example.jees.ese;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,21 +28,31 @@ public class EseLogin extends HttpServlet {
 		log.trace("User is: {" + user + "}");       //loggo il valore associato all'user (lo vedo qui sotto)
 		request.setAttribute("user", user);    //requesto è la request attributo
 		
-		String colour = request.getParameter("colour");   //se l'utente passa uno dei colore che vogliamo ok, altrimenti
-		switch (colour) {
-		case "blue":
-		case "green":         //questi nomi devono essere uguali al value che c'è in html
-		case "yellow":
-			log.trace("the chosen colour is: " + colour);
-			break;
-			default:                    //se non seceglie rifiliamo questo
-				colour = "Rosa";
-				break;
+		String[] colours = request.getParameterValues("colour");   //se l'utente passa uno dei colore che vogliamo ok, altrimenti (getPratameterValues torna array, getParameter torna solo un valore) 
+		String colour = colours != null? colours[0] : "pink";    //operatore ternario se il colore non è null prendi il primo, se l'utente non me ne ha scelto nemmeno uno allore è pink perchè in css lo legge in inglese
+		log.trace("the chosen colour is: " + colour);
+		
+		
+//		switch (colour) {
+//		case "blue":          //questo lo abbiamo usato prima, quando ho usato il select option
+//		case "green":         //questi nomi devono essere uguali al value che c'è in html
+//		case "yellow":
+//			log.trace("the chosen colour is: " + colour);
+//			break;
+//			default:                    //se non sceglie rifiliamo questo
+//				colour = "pink";
+//				break;
+//		}
+		
+		request.setAttribute("colour", colour);  //anche questo gestisce il colore
+		
+		List<String> favs = new ArrayList<>();
+		if (colours != null) {
+			for (int i = 0; i < colours.length; i++) {
+				favs.add(colours[i]);
+			}
 		}
-		
-		request.setAttribute("colour", colour);
-		
-		
+		request.setAttribute("colours", favs);
 		RequestDispatcher rd = request.getRequestDispatcher("logged.jsp");   //passo il controllo alla logged.jsp che dice ciao
         rd.forward(request, response); 
 	}

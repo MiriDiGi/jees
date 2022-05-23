@@ -25,8 +25,8 @@ public class Login extends HttpServlet {
         log.trace("user is " + user);
 
         // don't do that! sensitive data should be encrypted and stored in a safe place!
-        boolean vouched = "superuser".equals(user) && "fido".equals(password);
+        boolean vouched = "superuser".equals(user) && "fido".equals(password);    //se è diverso da questo non mi fa entrare
         request.getSession().setAttribute("logged", vouched);
-        request.getRequestDispatcher(vouched ? "index.jsp" : "login.html").forward(request, response);
+        request.getRequestDispatcher(vouched ? "index.jsp" : "login.html").forward(request, response);  //forward a index.jsp se vouched è true altrimenti rindirizzo a login
     }
 }

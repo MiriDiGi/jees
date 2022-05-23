@@ -12,7 +12,7 @@
     <c:if test="${reversedAdmin ne null}">
         <h1>Say hello to ${reversedAdmin}</h1>
     </c:if>
-    <h1>Ask ${initParam.admin} for more details</h1>
+    <h1>Ask ${initParam.admin} for more details</h1> <!-- initParam nome del contesto in cui mette il parametro di contesto in jsp --> 
 
     <p>
         Back <a href="/jees/index.html">home</a>

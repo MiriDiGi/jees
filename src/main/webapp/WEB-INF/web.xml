@@ -6,6 +6,7 @@
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
+         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
     <!-- slide 11 -->
@@ -21,7 +22,7 @@
 
     <!-- slide 12 -->
     <error-page>
-        <error-code>404</error-code>
+        <error-code>404</error-code>    <!-- se arriva un errore 404 tu rispondi con quello sotto -->
         <location>/s12/404.jsp</location>
     </error-page>
     <error-page>
@@ -29,11 +30,11 @@
         <location>/s12/500.jsp</location>
     </error-page>
 
-    <!-- slide 13 -->
+    <!-- slide 13 collegamento con jdbc-->
     <resource-ref>
         <res-ref-name>jdbc/hron</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
+        <res-auth>Container</res-auth>   <!-- è tomcat -->
     </resource-ref>
 
     <display-name>Java EE Servlet</display-name>
